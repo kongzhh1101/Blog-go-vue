@@ -2,6 +2,7 @@ package core
 
 import (
 	"Blog/config"
+	"Blog/global"
 	"fmt"
 	"log"
 	"os"
@@ -23,6 +24,5 @@ func InitConf() {
 		log.Fatalf("config Init Unmarshal %v", err)
 	}
 	log.Println("config yamlFile load Init success")
-	fmt.Println(c)
-
+	global.Config = c
 }

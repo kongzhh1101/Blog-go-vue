@@ -1,17 +1,24 @@
 mysql:
-  host: 127.0.0.1
-  port: 3306
-  db: blog
-  user: root
-  password:
-  log_level: dev
+    prefix: ""
+    port: "3306"
+    config: charset=utf8mb4&parseTime=True&loc=Local
+    db-name: gva
+    username: root
+    password: ""
+    path: 127.0.0.1
+    engine: ""
+    log-mode: error
+    max-idle-conns: 10
+    max-open-conns: 100
+    singular: false
+    log-zap: false
 
 logger:
   level: info
   perfix: '[blog]'
   director: log
   show_line: true
-  log_in_consol: true
+  log-in-consol: true
 
 system:
   host: "0.0.0.0"
