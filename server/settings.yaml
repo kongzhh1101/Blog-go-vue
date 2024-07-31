@@ -15,7 +15,7 @@ mysql:
 
 logger:
   level: info
-  perfix: '[blog]'
+  perfix: 'blog'
   director: log
   show_line: true
   log-in-consol: true
