@@ -6,6 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Response封装
+
 const (
 	ERROR   = 7
 	SUCCESS = 0

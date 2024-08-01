@@ -14,7 +14,10 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(global.Config.System.Env)
 	router := gin.Default()
 
+	// 路由分组
 	apiRouterGroup := router.Group("api")
+
+	// 路由分层
 	// 系统配置api
 	routerGroupApp := RouterGroup{apiRouterGroup}
 	routerGroupApp.SettingsRouter()
