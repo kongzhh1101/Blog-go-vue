@@ -8,7 +8,7 @@ type MessageModel struct {
 	SendUserAvatar   string    `json:"send_user_avatar"`
 
 	ReceiverUserID       uint      `gorm:"primaryKey" json:"receiver_user_id"`
-	ReceiverUser         UserModel `gorm:"foreignKey:receiverUserID" json:"receiver_user"`
+	ReceiverUser         UserModel `gorm:"foreignKey:ReceiverUserID" json:"receiver_user"`
 	ReceiverUserNickName string    `gorm:"size:42" json:"receiver_user_nick_name"`
 	ReceiverUserAvatar   string    `json:"recive_user_avatar"`
 	IsRead               bool      `gorm:"default:false" json:"is_read"`

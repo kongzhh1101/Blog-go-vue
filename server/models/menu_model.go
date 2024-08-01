@@ -9,7 +9,7 @@ type MenuModel struct {
 	Slogen       string        `gorm:"size:64" json:"slogen"`
 	Abstract     ctype.Array   `gorm:"type:string" json:"abstract"`
 	AbstractTime int           `json:"abstract_time"`
-	Banners      []BannerModel `gorm:"many2many:menu_banner; joinForeignKey:MenuID, joinReferences:BannerID" json:"banners"`
+	Banners      []BannerModel `gorm:"many2many:MenuBannerModel;joinForeignKey:MenuID;joinReferences:BannerID" json:"banners"`
 	BannerTime   int           `json:"banner_time"`
 	Sort         int           `gorm:"size:10" json:"sort"`
 }

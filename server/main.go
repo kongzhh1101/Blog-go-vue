@@ -2,6 +2,7 @@ package main
 
 import (
 	"Blog/core"
+	"Blog/flag"
 	"Blog/global"
 	"Blog/routers"
 )
@@ -16,8 +17,18 @@ func main() {
 	// 连接数据库
 	global.DB = core.InitGorm()
 
+	// 绑定命令行参数
+	option := flag.Parse()
+	if flag.IsWebStop(option) {
+		flag.SwitchOption(option)
+		return
+	}
+
 	addr := global.Config.System.Addr()
 	global.Log.Info(addr)
 	router := routers.InitRouter()
-	router.Run(addr)
+	err := router.Run(addr)
+	if err != nil {
+		global.Log.Fatalf(err.Error())
+	}
 }

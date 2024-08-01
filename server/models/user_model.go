@@ -5,6 +5,7 @@ import "Blog/models/ctype"
 // UserModel 用户表
 type UserModel struct {
 	MODEL
+	UID              uint
 	NickName         string             `gorm:"size:36" json:"nick_name"`
 	UserName         string             `gorm:"size:36" json:"user_name"`
 	Password         string             `gorm:"size:128" json:"password"`
@@ -17,5 +18,5 @@ type UserModel struct {
 	Role             ctype.Role         `gorm:"size:4;default:1" json:"role"`
 	SignupSource     ctype.SignupSource `gorm:"type:smallint(6)" json:"singup_source"`
 	ArticleModels    []ArticleModel     `gorm:"foreignKey:UserID" json:"-"`
-	CollectionModels []ArticleModel     `gorm:"many2many:user_collection;ForeignKey:UserID;joinForeignKey:ArticleID" json:"-"`
+	CollectionModels []ArticleModel     `gorm:"many2many:UserCollectModel;joinForeignKey:UserID;joinReferences:ArticleID" json:"-"`
 }

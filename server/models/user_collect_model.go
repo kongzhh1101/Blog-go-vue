@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-type User2Collect struct {
+type UserCollectModel struct {
 	UserID       uint         `gorm:"primaryKey"`
 	UserModel    UserModel    `gorm:"foreignKey:UserID"`
 	ArticleID    uint         `gorm:"primaryKey"`
