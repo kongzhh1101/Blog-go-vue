@@ -30,7 +30,7 @@ func InitConfig() {
 }
 
 // Updateconfig 更新yaml文件的配置
-func Updateconfig() error {
+func UpdateConfig() error {
 	byteData, err := yaml.Marshal(global.Config)
 	if err != nil {
 		return err

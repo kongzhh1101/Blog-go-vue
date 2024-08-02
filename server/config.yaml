@@ -24,5 +24,28 @@ system:
     env: release
 site-info:
     title: SuperMoose's Blog
-    version: 0.0.2
+    version: 0.0.3
     email: kongzhh1101@gmail.com
+qq:
+    app-id: SuperMoose
+    key: ""
+    redirect: ""
+jwt:
+    secret: secret
+    expire: 9999
+    issuer: blog
+email:
+    host: ""
+    port: 1111
+    user: SuperMoose
+    password: ""
+    default-from-email: ""
+    user-ssl: true
+    user-tls: false
+qiniu:
+    access_key: "456"
+    secret_key: ""
+    bucket: ""
+    cdn: ""
+    zone: ""
+    size: 1.1
