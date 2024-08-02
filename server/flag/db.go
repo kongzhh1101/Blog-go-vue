@@ -23,9 +23,9 @@ func MakeMigration() {
 	)
 
 	if err != nil {
-		global.Log.Error("[error] 生成数据表失败")
+		global.Logger.Error("[error] 生成数据表失败")
 		return
 	} else {
-		global.Log.Info("[success] 生成数据表成功")
+		global.Logger.Info("[success] 生成数据表成功")
 	}
 }

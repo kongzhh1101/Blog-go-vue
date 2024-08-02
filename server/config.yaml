@@ -12,15 +12,17 @@ mysql:
     max-open-conns: 100
     singular: false
     log-zap: false
-
 logger:
-  level: info
-  perfix: 'blog'
-  director: log
-  show_line: true
-  log-in-consol: true
-
+    level: info
+    perfix: blog
+    director: log
+    show_line: true
+    log-in-consol: true
 system:
-  host: "0.0.0.0"
-  port: 8080
-  env: release
+    host: 0.0.0.0
+    port: 8080
+    env: release
+site-info:
+    title: SuperMoose's Blog
+    version: 0.0.2
+    email: kongzhh1101@gmail.com

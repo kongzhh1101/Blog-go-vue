@@ -4,15 +4,17 @@ import (
 	"Blog/config"
 	"Blog/global"
 	"fmt"
+	"io/fs"
 	"log"
 	"os"
 
 	"gopkg.in/yaml.v3"
 )
 
+const ConfigFile = "config.yaml"
+
 // InitConf 读取yaml文件的配置
-func InitConf() {
-	const ConfigFile = "settings.yaml"
+func InitConfig() {
 	c := &config.Config{}
 	yamlConf, err := os.ReadFile(ConfigFile)
 	if err != nil {
@@ -25,4 +27,18 @@ func InitConf() {
 	}
 	log.Println("config yamlFile load Init success")
 	global.Config = c
+}
+
+// Updateconfig 更新yaml文件的配置
+func Updateconfig() error {
+	byteData, err := yaml.Marshal(global.Config)
+	if err != nil {
+		return err
+	}
+	err = os.WriteFile(ConfigFile, byteData, fs.ModePerm)
+	if err != nil {
+		return err
+	}
+	log.Println("config Updateconfig success")
+	return nil
 }

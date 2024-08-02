@@ -6,11 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Response封装
-
 const (
-	ERROR   = 7
-	SUCCESS = 0
+	Error   = 7
+	Success = 0
 )
 
 type Response struct {
@@ -28,30 +26,30 @@ func Result(code int, data any, msg string, c *gin.Context) {
 }
 
 func OK(data any, msg string, c *gin.Context) {
-	Result(SUCCESS, data, msg, c)
+	Result(Success, data, msg, c)
 }
 
 func OKWithData(data any, c *gin.Context) {
-	Result(SUCCESS, data, "操作成功", c)
+	Result(Success, data, "操作成功", c)
 }
 
 func OKWithMessage(msg string, c *gin.Context) {
-	Result(SUCCESS, map[string]any{}, msg, c)
+	Result(Success, nil, msg, c)
 }
 
 func Fail(data any, msg string, c *gin.Context) {
-	Result(ERROR, data, msg, c)
+	Result(Error, data, msg, c)
 }
 
 func FailWithMessage(msg string, c *gin.Context) {
-	Result(ERROR, map[string]any{}, msg, c)
+	Result(Error, nil, msg, c)
 }
 
 func FailWithCode(code ErrorCode, c *gin.Context) {
 	msg, ok := ErrorMap[code]
 	if ok {
-		Result(int(code), map[string]any{}, msg, c)
+		Result(int(code), nil, msg, c)
 		return
 	}
-	Result(ERROR, map[string]any{}, "未知错误", c)
+	Result(Error, nil, "未知错误", c)
 }

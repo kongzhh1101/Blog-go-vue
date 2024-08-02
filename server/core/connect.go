@@ -11,7 +11,7 @@ import (
 
 func InitGorm() *gorm.DB {
 	if global.Config.Mysql.Path == "" {
-		global.Log.Warn("未配置mysql，取消gorm连接")
+		global.Logger.Warn("未配置mysql，取消gorm连接")
 		return nil
 	}
 	dns := global.Config.Mysql.Dsn()
@@ -30,7 +30,7 @@ func InitGorm() *gorm.DB {
 	})
 
 	if err != nil {
-		global.Log.Fatalf("[%s] mysql连接失败", dns)
+		global.Logger.Fatalf("[%s] mysql连接失败", dns)
 	}
 
 	// 连接池

@@ -9,10 +9,10 @@ import (
 
 func main() {
 	// 读取配置文件
-	core.InitConf()
+	core.InitConfig()
 
 	// 初始化日志
-	global.Log = core.InitLogger()
+	global.Logger = core.InitLogger()
 
 	// 连接数据库
 	global.DB = core.InitGorm()
@@ -25,10 +25,10 @@ func main() {
 	}
 
 	addr := global.Config.System.Addr()
-	global.Log.Info(addr)
+	global.Logger.Info(addr)
 	router := routers.InitRouter()
 	err := router.Run(addr)
 	if err != nil {
-		global.Log.Fatalf(err.Error())
+		global.Logger.Fatalf(err.Error())
 	}
 }
