@@ -9,4 +9,5 @@ type Config struct {
 	JWT      JWT      `yaml:"jwt"`
 	Email    Email    `yaml:"email"`
 	QiNiu    QiNiu    `yaml:"qiniu"`
+	Upload   Upload   `yaml:"upload"`
 }

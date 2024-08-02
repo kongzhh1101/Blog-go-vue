@@ -16,7 +16,7 @@ func (SettingsApi) GetSettingsInfo(c *gin.Context) {
 	var uri SettingsUri
 	err := c.ShouldBindUri(&uri)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		res.FailWithMessage("绑定Uri错误", c)
 		return
 	}
 	settingName := uri.Name

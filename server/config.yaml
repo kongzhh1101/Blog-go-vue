@@ -22,6 +22,9 @@ system:
     host: 0.0.0.0
     port: 8080
     env: release
+upload:
+    size: 2
+    path: uploads/file
 site-info:
     title: SuperMoose's Blog
     version: 0.0.3
@@ -43,6 +46,7 @@ email:
     user-ssl: true
     user-tls: false
 qiniu:
+    enable: false
     access_key: "456"
     secret_key: ""
     bucket: ""
