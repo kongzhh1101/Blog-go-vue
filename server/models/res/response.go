@@ -17,9 +17,9 @@ type Response struct {
 	Msg  string `json:"msg"`
 }
 
-type ResponseList[T any] struct {
+type ResponseList struct {
 	Count any `json:"count"`
-	List  []T `json:"list"`
+	List  any `json:"list"`
 }
 
 func Result(code int, data any, msg string, c *gin.Context) {
@@ -42,8 +42,8 @@ func OKWithMessage(msg string, c *gin.Context) {
 	Result(Success, nil, msg, c)
 }
 
-func OKWithList[T any](count any, list []T, c *gin.Context) {
-	data := ResponseList[T]{
+func OKWithList(count any, list any, c *gin.Context) {
+	data := ResponseList{
 		Count: count,
 		List:  list,
 	}

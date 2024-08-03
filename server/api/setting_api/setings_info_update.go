@@ -1,4 +1,4 @@
-package settingsapi
+package setting_api
 
 import (
 	"Blog/config"

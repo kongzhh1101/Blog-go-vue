@@ -1,6 +1,8 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 type MODEL struct {
 	ID       uint      `gorm:"primaryKey" json:"id"`
@@ -13,4 +15,8 @@ type Page struct {
 	Key   string `form:"key"`
 	Limit int    `form:"limit"`
 	Sort  string `form:"sort"`
+}
+
+type RemoveList struct {
+	IDList []int `json:"id_list"`
 }

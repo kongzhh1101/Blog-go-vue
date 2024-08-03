@@ -1,4 +1,4 @@
-package imagesapi
+package image_api
 
 import (
 	"Blog/global"
@@ -107,14 +107,17 @@ func (ImagesApi) UploadImage(c *gin.Context) {
 		filepath := fmt.Sprintf("./%s/%s", basePath, file.Filename)
 
 		// 上传到数据库
-		f, err := os.ReadFile(filepath)
+		f, err := file.Open()
 		if err != nil {
 			global.Logger.Error(err.Error())
 			return
 		}
+		defer f.Close()
+
+		buffer := make([]byte, file.Size)
 
 		// 将哈希值转换为十六进制字符串
-		hashString := utils.MD5(f)
+		hashString := utils.MD5(buffer)
 
 		err = global.DB.Where("hash=?", hashString).Take(&models.BannerModel{}).Error
 		if err != nil {
@@ -148,6 +151,7 @@ func (ImagesApi) UploadImage(c *gin.Context) {
 				IsSuccess: false,
 				Message:   "图片已存在",
 			})
+			continue
 		}
 
 	}

@@ -5,6 +5,8 @@ import (
 	"encoding/hex"
 )
 
+// 转换为哈希值
+
 func MD5(src []byte) string {
 	m := md5.New()
 	m.Write(src)

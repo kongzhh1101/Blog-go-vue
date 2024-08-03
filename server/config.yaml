@@ -22,34 +22,34 @@ system:
     host: 0.0.0.0
     port: 8080
     env: debug
-upload:
-    size: 2
-    path: uploads/file
 site-info:
     title: SuperMoose's Blog
-    version: 0.0.3
+    version: 0.0.4
     email: kongzhh1101@gmail.com
 qq:
     app-id: SuperMoose
-    key: ""
+    key: a
     redirect: ""
 jwt:
     secret: secret
-    expire: 9999
+    expire: 999
     issuer: blog
 email:
     host: ""
-    port: 1111
+    port: 2222
     user: SuperMoose
     password: ""
     default-from-email: ""
     user-ssl: true
     user-tls: false
 qiniu:
-    enable: false
-    access_key: "456"
+    enabeld: false
+    access_key: "1"
     secret_key: ""
     bucket: ""
     cdn: ""
     zone: ""
     size: 1.1
+upload:
+    size: 2
+    path: uploads/file

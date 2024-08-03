@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 用于分页查询
+
 func MakePagination[T any](model []T, c *gin.Context) (count any, list []T, err error) {
 	count = global.DB.Find(&model).RowsAffected
 

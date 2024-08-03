@@ -23,8 +23,8 @@ func InitRouter() *gin.Engine {
 	// 路由分层 - 通过RouterGroup类型组织路由，使得路由的设置更加模块化和层次化。
 	// 系统配置api - 实例化RouterGroup，并注册设置和图片的相关路由。
 	routerGroupApp := RouterGroup{apiRouterGroup}
-	routerGroupApp.SettingsRouter()
-	routerGroupApp.ImagesRouter()
+	routerGroupApp.SettingRouter()
+	routerGroupApp.ImageRouter()
 
 	return router // 返回配置好的gin引擎实例。
 }
