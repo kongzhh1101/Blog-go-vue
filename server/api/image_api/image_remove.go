@@ -17,7 +17,12 @@ func (ImagesApi) ImageRemove(c *gin.Context) {
 	}
 	waitRemove := []models.BannerModel{}
 	count := global.DB.Where("id in (?)", removeRequest.IDList).Find(&waitRemove).RowsAffected
+	fmt.Println(waitRemove)
 
-	global.DB.Delete(&waitRemove)
-	res.OKWithMessage(fmt.Sprintf("删除成功,共删除%d条", count), c)
+	err = global.DB.Delete(&waitRemove).Error
+	if err != nil {
+		res.FailWithMessage(fmt.Sprintf("删除失败%v", err.Error()), c)
+	} else {
+		res.OKWithMessage(fmt.Sprintf("删除成功,共删除%d条", count), c)
+	}
 }

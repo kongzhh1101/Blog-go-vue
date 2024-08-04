@@ -25,6 +25,7 @@ func (b *BannerModel) BeforeDelete(tx *gorm.DB) (err error) {
 			global.Logger.Error(err)
 			return err
 		}
+
 	}
 	return nil
 }
