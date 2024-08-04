@@ -13,6 +13,13 @@ type ImageUpdateRequest struct {
 	Name string `json:"name" binding:"required" msg:"请输入文件名称"`
 }
 
+// @Tags Image
+// @Summary 更新图片
+// @Description 更改图片名字
+// @Accept  json
+// @Produce json
+// @Param id body ImageUpdateRequest false "要修改的图片id"
+// @Router /images [put]
 func (ImagesApi) UpdateImage(c *gin.Context) {
 
 	var cr ImageUpdateRequest

@@ -9,6 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Tags 设置信息
+// @Summary 跟新设置
+// @Description 根据传入的种类，和数据，修改对应设置的信息
+// @Accept  json
+// @Produce json
+// @Param data body config.Config false "设置种类"
+// @Param name path string false "设置种类"
+// @Router /settings/{name} [put]/
 func (SettingsApi) UpdateSettingsInfo(c *gin.Context) {
 	var uri SettingsUri
 	err := c.ShouldBindUri(&uri)

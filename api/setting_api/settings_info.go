@@ -12,6 +12,12 @@ type SettingsUri struct {
 	Name string `uri:"name"`
 }
 
+// @Tags 设置信息
+// @Summary 查看设置信息
+// @Description 根据传入的种类，返回对应的设置信息
+// @Produce json
+// @Param name path string false "设置种类"
+// @Router /settings/{name} [get]/
 func (SettingsApi) GetSettingsInfo(c *gin.Context) {
 	var uri SettingsUri
 	err := c.ShouldBindUri(&uri)

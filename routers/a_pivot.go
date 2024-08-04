@@ -18,7 +18,7 @@ func InitRouter() *gin.Engine {
 	router := gin.Default() // 创建默认的gin路由器。
 
 	// 路由分组 - 将所有api路由分组到/api路径下。
-	apiRouterGroup := router.Group("api")
+	apiRouterGroup := router.Group("/api")
 
 	// 路由分层 - 通过RouterGroup类型组织路由，使得路由的设置更加模块化和层次化。
 	// 系统配置api - 实例化RouterGroup，并注册设置和图片的相关路由。

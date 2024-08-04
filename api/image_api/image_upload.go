@@ -36,6 +36,13 @@ type UploadResponse struct {
 	Message   string `json:"message"`    // 消息描述
 }
 
+// @Tags Image
+// @Summary 上传图片
+// @Description 上传图片到数据库
+// @Accept  json
+// @Produce json
+// @Param images formData file false "图片文件"
+// @Router /images [post]
 func (ImagesApi) UploadImage(c *gin.Context) {
 	// 获取前端上传的内容
 	form, err := c.MultipartForm()
