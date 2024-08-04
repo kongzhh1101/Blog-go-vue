@@ -11,10 +11,10 @@ const (
 )
 
 func (s SignupSource) MarshalJSON() ([]byte, error) {
-	return json.Marshal(s)
+	return json.Marshal(s.Parse())
 }
 
-func (s SignupSource) ParseRole() string {
+func (s SignupSource) Parse() string {
 	var str string
 	switch s {
 	case QQ:

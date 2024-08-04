@@ -9,11 +9,11 @@ const (
 	QiNiu Location = 2
 )
 
-func (s Location) MarshalJSON() ([]byte, error) {
-	return json.Marshal(s)
+func (l Location) MarshalJSON() ([]byte, error) {
+	return json.Marshal(l.Parse())
 }
 
-func (l Location) ParseLocation() string {
+func (l Location) Parse() string {
 	var str string
 	switch l {
 	case Local:

@@ -3,7 +3,6 @@ package models
 import (
 	"Blog/global"
 	"Blog/models/ctype"
-	"fmt"
 	"os"
 
 	"gorm.io/gorm"
@@ -18,10 +17,9 @@ type BannerModel struct {
 }
 
 func (b *BannerModel) BeforeDelete(tx *gorm.DB) (err error) {
-	fmt.Println("xxxxxxxxx")
-	fmt.Println(b.Path)
+	// 判断文件存储的位置，本地or云端
 	if b.Location == ctype.Local {
-		fmt.Println("aaaaaa")
+
 		err = os.Remove(b.Path)
 		if err != nil {
 			global.Logger.Error(err)
