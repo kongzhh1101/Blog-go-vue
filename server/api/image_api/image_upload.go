@@ -15,6 +15,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 常用图片格式
 var ImageWhiteList = []string{
 	".jpg",
 	".jpeg",
@@ -28,26 +29,20 @@ var ImageWhiteList = []string{
 	".tiff",
 }
 
-// UploadResponse 图片上传响应结构体
-// 用于返回图片上传的结果信息
+// UploadResponse 图片上传响应结构体，用于返回图片上传的结果信息
 type UploadResponse struct {
 	FileName  string `json:"file_name"`  // 文件名
 	IsSuccess bool   `json:"is_success"` // 是否上传成功
 	Message   string `json:"message"`    // 消息描述
 }
 
-// UploadImage 上传图片接口处理函数
-// 该函数处理图片上传请求，验证图片文件并保存到指定路径
-// 参数:
-//
-//	c *gin.Context - Gin的上下文对象，用于处理HTTP请求和响应
 func (ImagesApi) UploadImage(c *gin.Context) {
-	// 解析表单数据
+	// 获取前端上传的内容
 	form, err := c.MultipartForm()
 	if err != nil {
-		// 解析表单数据失败，返回错误信息
 		res.FailWithMessage(err.Error(), c)
 	}
+
 	// 获取文件列表
 	FileList, ok := form.File["images"]
 	if !ok {
@@ -55,7 +50,7 @@ func (ImagesApi) UploadImage(c *gin.Context) {
 		res.FailWithMessage("不存在的文件", c)
 	}
 
-	// 获取上传路径
+	// 定义图片的保存路径
 	basePath := global.Config.Upload.Path
 	// 检查路径是否存在
 	_, err = os.Stat(basePath)

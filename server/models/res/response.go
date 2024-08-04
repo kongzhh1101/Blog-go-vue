@@ -1,6 +1,7 @@
 package res
 
 import (
+	"Blog/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -17,7 +18,7 @@ type Response struct {
 	Msg  string `json:"msg"`
 }
 
-type ResponseList struct {
+type ResponseForPagination struct {
 	Count any `json:"count"`
 	List  any `json:"list"`
 }
@@ -42,8 +43,9 @@ func OKWithMessage(msg string, c *gin.Context) {
 	Result(Success, nil, msg, c)
 }
 
-func OKWithList(count any, list any, c *gin.Context) {
-	data := ResponseList{
+// 用于传回分页结果切片信息
+func OKWithSlice(count any, list any, c *gin.Context) {
+	data := ResponseForPagination{
 		Count: count,
 		List:  list,
 	}
@@ -56,6 +58,11 @@ func Fail(data any, msg string, c *gin.Context) {
 
 func FailWithMessage(msg string, c *gin.Context) {
 	Result(Error, nil, msg, c)
+}
+
+func FailWithError(err error, obj any, c *gin.Context) {
+	msg := utils.GetValidMsg(err, obj)
+	FailWithMessage(msg, c)
 }
 
 func FailWithCode(code ErrorCode, c *gin.Context) {

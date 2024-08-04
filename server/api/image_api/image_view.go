@@ -3,22 +3,22 @@ package image_api
 import (
 	"Blog/models"
 	"Blog/models/res"
-	"Blog/utils"
+	service "Blog/service/common"
 
 	"github.com/gin-gonic/gin"
 )
 
 func (ImagesApi) ViewImage(c *gin.Context) {
 
-	imageList := []models.BannerModel{}
-
-	count, list, err := utils.MakePagination(imageList, c)
+	// 获取要返回的结果切片
+	imageSlice := []models.BannerModel{}
+	count, resultSlice, err := service.MakePagination(imageSlice, c)
 
 	if err != nil {
 		res.FailWithMessage(err.Error(), c)
 	} else {
-
-		res.OKWithList(count, list, c)
+		//获取成功，将信息返回前端
+		res.OKWithSlice(count, resultSlice, c)
 	}
 
 }
